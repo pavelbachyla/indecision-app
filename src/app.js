@@ -59,6 +59,12 @@ const getOptions = () => {
     }
 }
 
+function onMakeDecision() {
+    const randomNumber = Math.floor(Math.random() * app.options.length);
+    const option = app.options[randomNumber];
+    console.log('Random option:', option)
+}
+
 function renderIndecisionApp() {
     const template = (
         <div>
@@ -66,6 +72,7 @@ function renderIndecisionApp() {
             {app.subtitle && <h2>{app.subtitle}</h2>}
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
+            <button onClick={onMakeDecision} disabled={app.options.length === 0}>What should I do?</button>
             <button onClick={onRemoveAll}>Remove All</button>
             {getOptions()}
             <form onSubmit={onAddOption}>
