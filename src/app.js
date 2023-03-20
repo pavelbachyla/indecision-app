@@ -47,6 +47,18 @@ const reset = () => {
 
 const appRoot = document.getElementById('app')
 
+const getOptions = () => {
+    if (app.options.length > 0) {
+        return (
+            <ol>
+                {
+                    app.options.map(option => <li key={option}>{option}</li>)
+                }
+            </ol>
+        )
+    }
+}
+
 function renderIndecisionApp() {
     const template = (
         <div>
@@ -55,10 +67,7 @@ function renderIndecisionApp() {
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
             <button onClick={onRemoveAll}>Remove All</button>
-            <ol>
-                <li>Item one</li>
-                <li>Item two</li>
-            </ol>
+            {getOptions()}
             <form onSubmit={onAddOption}>
                 <input type='text' name='option'/>
                 <button>Add</button>
