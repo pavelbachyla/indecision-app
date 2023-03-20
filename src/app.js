@@ -11,14 +11,16 @@ let template = (
         </ol>
     </div>)
 
-let name = 'Pavel';
-let age = 27;
-let country = 'Georgia';
+let user = {
+    name: 'Pavel',
+    age: 27,
+    country: 'Georgia'
+}
 let templateTwo = (
     <div>
-        <h1>{name}</h1>
-        <p>Age: {age}</p>
-        <p>Location: {country}</p>
+        <h1>{user.name.toUpperCase()}</h1>
+        <p>Age: {user.age}</p>
+        <p>Location: {user.country}</p>
     </div>
 )
 
