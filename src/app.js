@@ -3,8 +3,70 @@ console.log(ReactDOM)
 
 const app = {
     tittle: 'Indecision App',
-    subtitle: 'First react app',
+    subtitle: 'Put your life in the hands of a computer',
     options: []
+}
+
+
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header/>
+                <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+                <p>{app.options.length}</p>
+                <Action/>
+                <button onClick={onRemoveAll}>Remove All</button>
+                <Options/>
+                <AddOption/>
+            </div>
+        )
+    }
+}
+
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 id={'template-id'}>{app.tittle}</h1>
+                {app.subtitle && <h2>{app.subtitle}</h2>}
+            </div>
+        )
+    }
+}
+
+class Action extends React.Component {
+    render() {
+        return (
+            <div>
+                <button onClick={onMakeDecision} disabled={app.options.length === 0}>What should I do?</button>
+            </div>
+        )
+    }
+}
+
+class Options extends React.Component {
+    render() {
+        return (
+            <ol>
+                {
+                    app.options.map(option => <li key={option}>{option}</li>)
+                }
+            </ol>
+        )
+    }
+}
+
+class AddOption extends React.Component {
+    render() {
+        return (
+            <form onSubmit={onAddOption}>
+                <input type='text' name='option'/>
+                <button>Add</button>
+            </form>
+        )
+    }
+
 }
 
 const onAddOption = e => {
@@ -47,18 +109,6 @@ const reset = () => {
 
 const appRoot = document.getElementById('app')
 
-const getOptions = () => {
-    if (app.options.length > 0) {
-        return (
-            <ol>
-                {
-                    app.options.map(option => <li key={option}>{option}</li>)
-                }
-            </ol>
-        )
-    }
-}
-
 function onMakeDecision() {
     const randomNumber = Math.floor(Math.random() * app.options.length);
     const option = app.options[randomNumber];
@@ -66,23 +116,7 @@ function onMakeDecision() {
 }
 
 function renderIndecisionApp() {
-    const template = (
-        <div>
-            <h1 id={'template-id'}>{app.tittle}</h1>
-            {app.subtitle && <h2>{app.subtitle}</h2>}
-            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-            <p>{app.options.length}</p>
-            <button onClick={onMakeDecision} disabled={app.options.length === 0}>What should I do?</button>
-            <button onClick={onRemoveAll}>Remove All</button>
-            {getOptions()}
-            <form onSubmit={onAddOption}>
-                <input type='text' name='option'/>
-                <button>Add</button>
-            </form>
-        </div>
-    )
-
-    ReactDOM.render(template, appRoot)
+    ReactDOM.render(<IndecisionApp />, appRoot)
 }
 
 function renderCounterApp() {
