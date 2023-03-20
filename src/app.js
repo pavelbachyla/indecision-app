@@ -1,13 +1,13 @@
 console.log(React)
 console.log(ReactDOM)
 
-let app = {
+const app = {
     tittle: 'Indecision App',
     subtitle: 'First react app',
     options: ['one', 'two']
 }
 
-let template = (
+const template = (
     <div>
         <h1 id={'template-id'}>{app.tittle}</h1>
         {app.subtitle && <h2>{app.subtitle}</h2>}
@@ -18,7 +18,7 @@ let template = (
         </ol>
     </div>)
 
-let user = {
+const user = {
     name: 'Pavel',
     age: 27,
     country: 'Georgia'
@@ -34,7 +34,7 @@ function getAge(age) {
     return (age && age >= 18) && <p>Age: {age}</p>
 }
 
-let templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name ? user.name.toUpperCase(): 'Anonymous'}</h1>
         {getAge(user.age)}
@@ -42,5 +42,5 @@ let templateTwo = (
     </div>
 )
 
-let appRoot = document.getElementById('app')
+const appRoot = document.getElementById('app')
 ReactDOM.render(template, appRoot)
