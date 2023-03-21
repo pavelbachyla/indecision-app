@@ -70,7 +70,7 @@ class Options extends React.Component {
     }
 
     handleRemoveAll() {
-         app.options = []
+        app.options = []
         // renderIndecisionApp()
     }
 }
@@ -107,44 +107,58 @@ class AddOption extends React.Component {
 
 }
 
-let counter = 0
-
-const increment = () => {
-    counter++
-    console.log("Increment")
-    renderCounterApp()
-};
-
-const decrement = () => {
-    counter--
-    console.log("Decrement")
-    renderCounterApp()
-};
-
-const reset = () => {
-    counter = 0
-    console.log("Reset")
-    renderCounterApp()
-};
-
-
-const appRoot = document.getElementById('app')
 
 function renderIndecisionApp() {
-    ReactDOM.render(<IndecisionApp/>, appRoot)
+    ReactDOM.render(<IndecisionApp/>, document.getElementById('app'))
 }
 
-function renderCounterApp() {
-    const templateTwo = (
-        <div>
-            <h1>Count: {counter}</h1>
-            <button onClick={increment}>+1</button>
-            <button onClick={decrement}>-1</button>
-            <button onClick={reset}>Reset</button>
-        </div>
-    )
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.reset = this.reset.bind(this)
+        this.minusOne = this.minusOne.bind(this)
+        this.plusOne = this.plusOne.bind(this)
+        this.state = {
+            count: 1
+        }
+    }
 
-    ReactDOM.render(templateTwo, appRoot)
+    render() {
+        return (
+            <div>
+                <h1>Count: {this.state.count}</h1>
+                <button onClick={this.plusOne}>+1</button>
+                <button onClick={this.minusOne}>-1</button>
+                <button onClick={this.reset}>Reset</button>
+            </div>
+        )
+    }
+
+    minusOne() {
+        this.setState((prevState) => {
+            return {
+                count: prevState.count - 1
+            }
+        })
+    }
+
+    plusOne() {
+        this.setState((prevState) => {
+            return {
+                count: prevState.count + 1
+            }
+        })
+    }
+
+    reset() {
+        this.setState(() => {
+            return {
+                count: 0
+            }
+        })
+    }
 }
 
-renderIndecisionApp()
+ReactDOM.render(<Counter />, document.getElementById('app'))
+
+// renderIndecisionApp()
