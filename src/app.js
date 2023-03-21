@@ -8,16 +8,15 @@ class IndecisionApp extends React.Component {
         this.handlePick = this.handlePick.bind(this)
         this.handleAddOption = this.handleAddOption.bind(this)
         this.state = {
-            options: ['Learn React', "Read a book about Architecture", 'Take a break']
+            options: props.options
         }
     }
 
     render() {
-        const title = 'Indecision App'
         const subtitle = 'Put your life in the hands of a computer'
         return (
             <div>
-                <Header title={title} subtitle={subtitle}/>
+                <Header subtitle={subtitle}/>
                 <Action
                     handlePick={this.handlePick}
                     hasOptions={this.state.options.length > 0}/>
@@ -60,6 +59,10 @@ class IndecisionApp extends React.Component {
     }
 }
 
+IndecisionApp.defaultProps = {
+    options: ['Learn React', "Read a book about Architecture", 'Take a break']
+}
+
 const Header = (props) => {
     return (
         <div>
@@ -67,6 +70,9 @@ const Header = (props) => {
             {props.subtitle && <h2>{props.subtitle}</h2>}
         </div>
     )
+}
+Header.defaultProps = {
+    title: 'Indecision'
 }
 
 const Action = (props) => {
@@ -81,11 +87,9 @@ const Options = (props) => {
     return (
         <div>
             <button onClick={props.handleDeleteOptions}>Delete All</button>
-            <ol>
-                {
-                    props.options.map(option => <Option key={Math.random()} option={option}/>)
-                }
-            </ol>
+            {
+                props.options.map(option => <Option key={Math.random()} option={option}/>)
+            }
         </div>
     )
 }
@@ -137,7 +141,7 @@ class Counter extends React.Component {
         this.minusOne = this.minusOne.bind(this)
         this.plusOne = this.plusOne.bind(this)
         this.state = {
-            count: 1
+            count: props.count
         }
     }
 
@@ -175,6 +179,9 @@ class Counter extends React.Component {
             }
         })
     }
+}
+Counter.defaultProps = {
+    count: 0
 }
 
 ReactDOM.render(<IndecisionApp/>, document.getElementById('app'))
