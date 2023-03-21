@@ -51,11 +51,9 @@ class IndecisionApp extends React.Component {
         } else if (this.state.options.indexOf(option) !== -1) {
             return 'This option already exists'
         }
-        this.setState((prevState) => {
-            return {
-                options: prevState.options.concat(option)
-            }
-        })
+        this.setState((prevState) => ({
+            options: prevState.options.concat(option)
+        }))
     }
 }
 
@@ -125,9 +123,9 @@ class AddOption extends React.Component {
         e.preventDefault()
         const option = e.target.elements['option']
         const error = this.props.handleAddOption(option.value);
-        this.setState(() => {
-            return {error}
-        })
+        this.setState(() => ({
+            error
+        }))
         if (!error) {
             option.value = ''
         }
@@ -157,29 +155,24 @@ class Counter extends React.Component {
     }
 
     minusOne() {
-        this.setState((prevState) => {
-            return {
-                count: prevState.count - 1
-            }
-        })
+        this.setState((prevState) => ({
+            count: prevState.count - 1
+        }));
     }
 
     plusOne() {
-        this.setState((prevState) => {
-            return {
-                count: prevState.count + 1
-            }
-        })
+        this.setState((prevState) => ({
+            count: prevState.count + 1
+        }));
     }
 
     reset() {
-        this.setState(() => {
-            return {
-                count: 0
-            }
-        })
+        this.setState(() => ({
+            count: 0
+        }));
     }
 }
+
 Counter.defaultProps = {
     count: 0
 }
