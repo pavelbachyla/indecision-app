@@ -13,6 +13,27 @@ class IndecisionApp extends React.Component {
         }
     }
 
+    componentDidMount() {
+        try {
+            console.log('Fetching data', localStorage.getItem('options'))
+            const json = localStorage.getItem('options')
+            const options = JSON.parse(json)
+            if (options) {
+                this.setState(() => ({options}))
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.options.length !== this.state.options.length) {
+            console.log('Saving data', prevProps, prevState)
+            const json = JSON.stringify(this.state.options)
+            localStorage.setItem('options', json)
+        }
+    }
+
     render() {
         const subtitle = 'Put your life in the hands of a computer'
         return (
@@ -92,7 +113,8 @@ const Action = (props) => {
 const Options = (props) => {
     return (
         <div>
-            <button onClick={props.handleDeleteOptions}>Delete All</button>
+            <button onClick={props.handleDeleteOptions}>Remove All</button>
+            {props.options.length === 0 && <p>Please add an option to get started!</p>}
             {
                 props.options.map(option =>
                     <Option
