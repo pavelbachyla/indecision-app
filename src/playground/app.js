@@ -1,3 +1,6 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 console.log(React)
 console.log(ReactDOM)
 
@@ -232,4 +235,4 @@ Counter.defaultProps = {
     count: 0
 }
 
-ReactDOM.render(<Counter/>, document.getElementById('app'))
+ReactDOM.render(<IndecisionApp/>, document.getElementById('app'))

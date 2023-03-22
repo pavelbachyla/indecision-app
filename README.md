@@ -6,12 +6,12 @@
 
 ### Install Dependencies
 ````bash
-yarn install
+npm install
 ````
 
-### Run Babel
+### Run webpack
 ````bash
-yarn run babel
+yarn run build
 ````
 
 ### Start live-server
