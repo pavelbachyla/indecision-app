@@ -185,6 +185,19 @@ class Counter extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const count = parseInt(localStorage.getItem('count'))
+        if (!isNaN(count)) {
+            this.setState(() => ({count}))
+        }
+    }
+
+    componentDidUpdate(prevState) {
+        if (prevState.count !== this.state.count) {
+            localStorage.setItem('count', this.state.count)
+        }
+    }
+
     render() {
         return (
             <div>
@@ -219,4 +232,4 @@ Counter.defaultProps = {
     count: 0
 }
 
-ReactDOM.render(<IndecisionApp/>, document.getElementById('app'))
+ReactDOM.render(<Counter/>, document.getElementById('app'))
