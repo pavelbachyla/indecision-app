@@ -9,12 +9,13 @@
 npm install
 ````
 
-### Run webpack
+### Run for development
 ````bash
-yarn run build
+yarn run dev-server
 ````
 
-### Start live-server
+## Production Guide
+### Run
 ````bash
-yarn run run
+yarn run build
 ````
