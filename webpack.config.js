@@ -13,7 +13,7 @@ module.exports = {
             exclude: /node_modules/
         }, {
             use: ['style-loader', 'css-loader', 'sass-loader'],
-            test: /\.scss$/
+            test: /\.s?css$/
         }]
     },
     devtool: 'eval-cheap-module-source-map',
