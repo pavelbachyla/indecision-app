@@ -1,11 +1,18 @@
 import React from 'react'
 
 class AddOption extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleAddOption = this.handleAddOption.bind(this)
-        this.state = {
-            error: undefined
+    state = {
+        error: undefined
+    }
+    handleAddOption = (e) => {
+        e.preventDefault()
+        const option = e.target.elements['option']
+        const error = this.props.handleAddOption(option.value);
+        this.setState(() => ({
+            error
+        }))
+        if (!error) {
+            option.value = ''
         }
     }
 
@@ -19,18 +26,6 @@ class AddOption extends React.Component {
                 </form>
             </div>
         )
-    }
-
-    handleAddOption(e) {
-        e.preventDefault()
-        const option = e.target.elements['option']
-        const error = this.props.handleAddOption(option.value);
-        this.setState(() => ({
-            error
-        }))
-        if (!error) {
-            option.value = ''
-        }
     }
 }
 
