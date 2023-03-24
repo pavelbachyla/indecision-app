@@ -1,10 +1,14 @@
-$purple: #20222b;
-$purple2: rebeccapurple;
+@import "settings";
+
 html {
   font-size: 62.5%;
 }
 body {
   font-family: 'Franklin Gothic Book, Arial', sans-serif;
-  font-size: 1.6rem;
+  font-size: $m-size;
+  background-color: $dark-blue;
+}
 
+button:enabled {
+  cursor: pointer;
 }

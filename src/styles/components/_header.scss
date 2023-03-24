@@ -1,21 +1,20 @@
-@import "./src/styles/base/base";
+@import "./src/styles/base/settings";
 
 .header {
-  background: $purple;
+  background: $purple-primary;
   color: white;
-  margin-bottom: 4.8rem;
-  padding: 1.6rem 0;
-
+  margin-bottom: $xl-size;
+  padding: $m-size 0;
 }
 
 .header__tittle {
-  font-size: 3.2rem;
+  font-size: $l-size;
   margin: 0;
 }
 
 .header__subtitle {
-  color: #a5afd7;
-  font-size: 1.6rem;
+  color: $off-white;
+  font-size: $m-size;
   font-weight: 500;
   margin: 0;
 }
