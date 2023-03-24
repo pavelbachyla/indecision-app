@@ -11,11 +11,11 @@ npm install
 
 ### Run for development
 ````bash
-yarn run dev-server
+npm run dev-server
 ````
 
 ## Production Guide
 ### Run
 ````bash
-yarn run build
+npm run build
 ````
